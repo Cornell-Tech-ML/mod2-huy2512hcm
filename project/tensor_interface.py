@@ -75,7 +75,13 @@ def st_visualize_tensor(
 
     if len(tensor.shape) != 3:
         # TODO: Fix visualization instead of showing warning
-        st.error("Can only visualize a tensor which has 3 dimensions")
+        if len(tensor.shape) == 1:
+            st.write("**1D Tensor Visualization:**")
+            st.write(tensor._tensor._storage)
+        elif len(tensor.shape) == 2:
+            st.write("**2D Tensor Visualization:**")
+            data = np.array(tensor._tensor._storage).reshape((rows, columns))
+            st.table(data)
         return
 
     position_in_storage = index_to_position(highlighted_index, strides)
