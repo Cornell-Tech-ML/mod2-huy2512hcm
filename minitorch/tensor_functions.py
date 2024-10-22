@@ -198,7 +198,7 @@ class Sum(Function):
     def backward(ctx: Context, grad_output: Tensor) -> Tuple[Tensor, Tensor]:
         """Computes gradients for sum."""
         a_shape, dim = ctx.saved_values
-        return grad_output, zeros(a_shape)
+        return grad_output, zeros(grad_output.shape)
 
 
 class LT(Function):
@@ -242,7 +242,7 @@ class Permute(Function):
     def forward(ctx: Context, a: Tensor, order: Tensor) -> Tensor:
         """Permute the dimensions of the input tensor."""
         order_list = [int(order[i]) for i in range(order.size)]
-        ctx.save_for_backward(a.shape, order_list)
+        ctx.save_for_backward(a, order_list)
         p = a._tensor.permute(*order_list)
         shape = tuple(a.shape[i] for i in order_list)
         return minitorch.Tensor.make(
@@ -252,11 +252,12 @@ class Permute(Function):
         )
 
     @staticmethod
-    def backward(ctx: Context, grad_output: Tensor) -> Tuple[Tensor, Tensor]:
+    def backward(ctx: Context, grad_output: Tensor) -> Tuple[Tensor, float]:
         """Computes the gradients for permutation."""
-        a_shape, order = ctx.saved_values
+        a, order = ctx.saved_values
+        a_shape = a.shape
         reverse_order = [order.index(i) for i in range(len(a_shape))]
-        return grad_output.permute(*reverse_order), zeros(grad_output.shape)
+        return grad_output.permute(*reverse_order), 0
 
 
 class View(Function):
