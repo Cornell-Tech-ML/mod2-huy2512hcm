@@ -75,7 +75,7 @@ def st_visualize_tensor(
 
     if len(tensor.shape) != 3:
         # TODO: Fix visualization instead of showing warning
-        st.error("Can only visualize a tensor which has 3 dimensions")
+        st.error("")
         return
 
     position_in_storage = index_to_position(highlighted_index, strides)
