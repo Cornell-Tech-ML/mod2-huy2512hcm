@@ -74,7 +74,7 @@ The files that will be synced are:
 * Epoch: 470/500, loss: 0.9780089200539043, correct: 50
 * Epoch: 480/500, loss: 0.947185713436845, correct: 50
 * Epoch: 490/500, loss: 0.918057871216295, correct: 50
-* Epoch: 500/500, loss: 0.8903783215835088, correct: 50
+* Epoch: 500/500, loss: 0.8903783215835088, correct: 50\
 
 
 
@@ -85,7 +85,7 @@ The files that will be synced are:
 ![alt text](<Screenshot 2024-10-21 at 1.50.43 PM.png>)
 ![alt text](<Screenshot 2024-10-21 at 1.50.55 PM.png>)
 ![alt text](<Screenshot 2024-10-21 at 1.51.00 PM.png>)
-* 
+
 * Epoch: 0/500, loss: 0, correct: 0
 * Epoch: 10/500, loss: 20.46267911263876, correct: 43
 * Epoch: 20/500, loss: 19.612695497365337, correct: 43
@@ -136,8 +136,8 @@ The files that will be synced are:
 * Epoch: 470/500, loss: 0.5987926069319363, correct: 50
 * Epoch: 480/500, loss: 0.5826839249740098, correct: 50
 * Epoch: 490/500, loss: 0.5673428406291561, correct: 50
-* Epoch: 500/500, loss: 0.5526675864518412, correct: 50
-* 
+* Epoch: 500/500, loss: 0.5526675864518412, correct: 50\
+
 
 * Below is the training logs and the final images for split dataset that I created:
 ![alt text](<Screenshot 2024-10-21 at 2.08.53 PM.png>)
@@ -195,7 +195,7 @@ The files that will be synced are:
 * Epoch: 470/500, loss: 6.444883828479353, correct: 47
 * Epoch: 480/500, loss: 2.371435212763499, correct: 49
 * Epoch: 490/500, loss: 1.9290630381080915, correct: 50
-* Epoch: 500/500, loss: 1.796858746698749, correct: 50
+* Epoch: 500/500, loss: 1.796858746698749, correct: 50\
 
 
 * Below is the training logs and the final images for XOR dataset that I created:
