@@ -18,7 +18,7 @@ The files that will be synced are:
 
         minitorch/operators.py minitorch/module.py minitorch/autodiff.py minitorch/scalar.py minitorch/scalar_functions.py minitorch/module.py project/run_manual.py project/run_scalar.py project/datasets.py
 
-* Below is the training logs and the final images for simple linear dataset that I created:
+Below is the training logs and the final images for simple linear dataset that I created:
 ![alt text](<Screenshot 2024-10-21 at 1.40.30 PM.png>)
 ![alt text](<Screenshot 2024-10-21 at 1.40.38 PM.png>)
 ![alt text](<Screenshot 2024-10-21 at 1.40.44 PM.png>)
@@ -76,10 +76,7 @@ The files that will be synced are:
 * Epoch: 490/500, loss: 0.918057871216295, correct: 50
 * Epoch: 500/500, loss: 0.8903783215835088, correct: 50\
 
-
-
-
-* Below is the training logs and the final images for diagonal dataset that I created:
+ Below is the training logs and the final images for diagonal dataset that I created:
 ![alt text](<Screenshot 2024-10-21 at 1.50.19 PM.png>)
 ![alt text](<Screenshot 2024-10-21 at 1.50.32 PM.png>)
 ![alt text](<Screenshot 2024-10-21 at 1.50.43 PM.png>)
@@ -139,7 +136,7 @@ The files that will be synced are:
 * Epoch: 500/500, loss: 0.5526675864518412, correct: 50\
 
 
-* Below is the training logs and the final images for split dataset that I created:
+Below is the training logs and the final images for split dataset that I created:
 ![alt text](<Screenshot 2024-10-21 at 2.08.53 PM.png>)
 ![alt text](<Screenshot 2024-10-21 at 2.08.59 PM.png>)
 ![alt text](<Screenshot 2024-10-21 at 8.04.16 PM.png>)
@@ -198,7 +195,7 @@ The files that will be synced are:
 * Epoch: 500/500, loss: 1.796858746698749, correct: 50\
 
 
-* Below is the training logs and the final images for XOR dataset that I created:
+Below is the training logs and the final images for XOR dataset that I created:
 ![alt text](<Screenshot 2024-10-21 at 2.23.38 PM.png>)
 ![alt text](<Screenshot 2024-10-21 at 2.26.59 PM.png>)
 ![alt text](<Screenshot 2024-10-21 at 8.25.46 PM.png>)
