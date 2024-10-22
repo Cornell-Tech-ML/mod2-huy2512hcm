@@ -195,10 +195,10 @@ class Sum(Function):
         return a.f.add_reduce(a, int(dim.item()))
 
     @staticmethod
-    def backward(ctx: Context, grad_output: Tensor) -> Tuple[Tensor, float]:
+    def backward(ctx: Context, grad_output: Tensor) -> Tuple[Tensor, Tensor]:
         """Computes gradients for sum."""
         a_shape, dim = ctx.saved_values
-        return grad_output, 0.0
+        return grad_output, zeros(a_shape)
 
 
 class LT(Function):
@@ -208,9 +208,9 @@ class LT(Function):
         return t1.f.lt_zip(t1, t2)
 
     @staticmethod
-    def backward(ctx: Context, grad_output: Tensor) -> Tuple[float, float]:
+    def backward(ctx: Context, grad_output: Tensor) -> Tuple[Tensor, Tensor]:
         """No gradients for comparison."""
-        return 0.0, 0.0
+        return zeros(grad_output.shape), zeros(grad_output.shape)
 
 
 class EQ(Function):
@@ -220,9 +220,9 @@ class EQ(Function):
         return t1.f.eq_zip(t1, t2)
 
     @staticmethod
-    def backward(ctx: Context, grad_output: Tensor) -> Tuple[float, float]:
+    def backward(ctx: Context, grad_output: Tensor) -> Tuple[Tensor, Tensor]:
         """No gradients for comparison."""
-        return 0.0, 0.0
+        return zeros(grad_output.shape), zeros(grad_output.shape)
 
 
 class IsClose(Function):
@@ -232,11 +232,9 @@ class IsClose(Function):
         return t1.f.is_close_zip(t1, t2)
 
     @staticmethod
-    def backward(
-        ctx: Context, t1: Tensor, t2: Tensor, grad_output: Tensor
-    ) -> Tuple[float, float]:
+    def backward(ctx: Context, grad_output: Tensor) -> Tuple[Tensor, Tensor]:
         """No gradients for comparison."""
-        return 0.0, 0.0
+        return zeros(grad_output.shape), zeros(grad_output.shape)
 
 
 class Permute(Function):
@@ -254,11 +252,11 @@ class Permute(Function):
         )
 
     @staticmethod
-    def backward(ctx: Context, grad_output: Tensor) -> Tuple[Tensor, float]:
+    def backward(ctx: Context, grad_output: Tensor) -> Tuple[Tensor, Tensor]:
         """Computes the gradients for permutation."""
         a_shape, order = ctx.saved_values
         reverse_order = [order.index(i) for i in range(len(a_shape))]
-        return grad_output.permute(*reverse_order), 0.0
+        return grad_output.permute(*reverse_order), zeros(grad_output.shape)
 
 
 class View(Function):
@@ -273,14 +271,14 @@ class View(Function):
         )
 
     @staticmethod
-    def backward(ctx: Context, grad_output: Tensor) -> Tuple[Tensor, float]:
+    def backward(ctx: Context, grad_output: Tensor) -> Tuple[Tensor, Tensor]:
         """Matrix Multiply backward (module 3)"""
         (original,) = ctx.saved_values
         return (
             minitorch.Tensor.make(
                 grad_output._tensor._storage, original, backend=grad_output.backend
             ),
-            0.0,
+            zeros(grad_output.shape),
         )
 
 

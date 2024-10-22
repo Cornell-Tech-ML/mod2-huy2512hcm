@@ -26,13 +26,19 @@ class Network(minitorch.Module):
         h2 = self.layer2.forward(h1).relu()
         return self.layer3.forward(h2).sigmoid()
 
-class Linear:
-    def __init__(self, in_features, out_features):
-        self.weight = RParam(in_features, out_features)
-        self.bias = RParam(out_features)
+class Linear(minitorch.Module):
+    def __init__(self, in_size, out_size):
+        super().__init__()
+        self.weight = RParam(in_size, out_size)
+        self.bias = RParam(out_size)
+        self.out_size = out_size
 
     def forward(self, x):
-        return x @ self.weight.value + self.bias.value
+        X = x.view(*x.shape, 1)
+        W = self.weight.value.view(1, *self.weight.value.shape)
+        bias = self.bias.value.view(1, self.out_size)
+        return (X * W).sum(1).view(X.shape[0], self.out_size) + bias
+
 
 def default_log_fn(epoch, total_loss, correct, losses):
     print("Epoch ", epoch, " loss ", total_loss, "correct", correct)
